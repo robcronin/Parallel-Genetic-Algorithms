@@ -1,0 +1,55 @@
+Based on an assignment from a HPC module from my Masters in HPC
+Based on Genetic Algorithms
+
+Note: This was developed early in the course and may be a bit rough around the edges
+	e.g. It has not been properly seperated into header files etc
+
+Note: Basic descriptions of questions shown below. For further detail, see report.pdf which was submitted with the assignment
+
+
+Each assignment question is listed below with a compile command, test command and run command
+Additional optional flags, where approapiate, are listed afterwards
+At least 4 processes need to be available to run tests for Q3-5
+
+Q1 - Genetic Algorithm on string of 1s and 0s where fitness is sum of 1s
+	make string
+	make test_string
+	./string.out
+
+Q2 - Genetic Algorithm on repeated playing of Prisoner's Dilemma, fitness based on sum of outcomes of playing every member in population for certain number of games
+	make pdserial
+	make test_serial
+	./pdserial.out
+
+Q3 - Prisoner's Dilemma run in Parallel using Master Slave
+	make pdparallel
+	make test_parallel
+	mpirun -n 4 ./pdparallel.out
+
+Q4 - Prisoner's Dilemma in Parallel using Island Method
+	make pdparallel
+	make test_island
+	mpirun -n 4 ./pdparallel.out -i
+
+Q5 - Rock, Paper, Scissors where fitness based on result of move against population
+	make rps
+	make test_rps
+	mpirun -n 4 ./rps.out
+
+To remove executables and data files:
+	make clean
+
+OPTIONAL FLAGS:
+	-i [Turn on island mode]	Default: Master-Slave
+	-c [crossover rate]		Default: 0.9
+	-m [mutate rate]		Default: 0.01
+	-g [number of generations]	Default: 100
+	-p [population size]		Default: 120
+	-n [number of pd games]		Default: 100
+	-a [Change migration size]	Default: 20
+	-t [Change migration interval]	Default: 10
+
+	-f [force print of population before and after]
+	-s [seed the code (for debugging mostly)]
+	-r [randomise first two strategies (instead of hardcode)]
+	
